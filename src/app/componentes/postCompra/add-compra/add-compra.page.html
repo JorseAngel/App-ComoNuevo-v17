@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-item class="fuenteCabezera" style="text-align: center;font-size: 18px;">
+      <ion-avatar>
+        <img src="../../../../assets/icon/addBlue-icon.png"  width="100" height="100" />
+      </ion-avatar>
+      <ion-label>Agregar Post de compra</ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="controlForm" *ngFor="let item of nombreControles; let i = index" >
+    <ion-item style="color: antiquewhite;">
+      <ion-label position="floating">{{item}}</ion-label>
+      <ion-input [formControlName]=item name="{{item}}" type="text" [(ngModel)] = "catchDataArray[i]"></ion-input>
+    </ion-item> 
+
+    <ion-item *ngIf="mensajeErrorActivo && !validateAllControlArrayAddPost[i+1]">
+      <ion-label class="errorValidation"
+      >{{errorAllControlArrayAddPost[i]
+      }}</ion-label> 
+    </ion-item>
+
+  </form>
+
+  <ion-button expand="block" (click)="validateAndAdd()">Publicar</ion-button>
+</ion-content>

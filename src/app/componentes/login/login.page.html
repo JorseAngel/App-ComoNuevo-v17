@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="fuenteCabezera">
+    <ion-title style="text-align: center;">
+      LOGIN
+    </ion-title>
+    <ion-buttons slot="end">
+      <img height="60" width="60" src="../../../assets/img/logo-nombre.jpeg" alt="">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="controlForm" *ngFor="let item of nombreControles; let i = index" >
+    <ion-item style="color: antiquewhite;">
+      <ion-label position="floating">{{item}}</ion-label>
+      <ion-input *ngIf="i == 0" [formControlName]=item name="{{item}}" type="text" [(ngModel)] = "catchDataArray[i]"></ion-input>
+      <ion-input *ngIf="i == 1"  [formControlName]=item name="{{item}}" type="password" [(ngModel)] = "catchDataArray[i]"></ion-input>
+    </ion-item> 
+    <ion-item *ngIf="mensajeErrorActivo && !validateAllControlArrayLogin[i+1]">
+      <ion-label class="errorValidation"
+      >{{errorAllControlArrayLogin[i]
+      }}</ion-label> 
+    </ion-item>
+
+  </form>
+
+  <!-- <ion-item>
+    <ion-label position="floating">Correo electronico</ion-label>
+    <ion-input type="text" name="email" [(ngModel)] = "email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" name="password" [(ngModel)] = "password"></ion-input>
+  </ion-item>  -->
+
+
+   <!-- <ion-button (click)="onSubmitLogin()" expand="block">Entrar</ion-button> -->
+  <ion-button (click)="validateAndLogin()" expand="block">Entrar</ion-button>
+  <ion-button (click)="accessRegistration()" expand="block">Registrase</ion-button>
+  
+</ion-content>

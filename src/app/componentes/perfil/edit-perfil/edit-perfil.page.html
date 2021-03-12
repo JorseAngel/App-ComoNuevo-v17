@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-item class="fuenteCabezera" style="text-align: center;">
+      <ion-avatar>
+        <img src="../../../../assets/icon/editUser-icon.png"  width="100" height="100" />
+      </ion-avatar>
+      <ion-label class="fuenteCabezera">{{usuarioModel.nombre}}</ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="idPrueba">
+  <!-- <ion-item style="color: antiquewhite;">
+    <ion-label position="floating">Correo electronico</ion-label>
+    <ion-input type="text" name="email" value="{{usuarioModel.email}}" [(ngModel)] = "usuarioModel.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-item *ngIf="textPasswordCurrent" style="color: antiquewhite;">
+        <ion-label position="floating">Current password </ion-label>
+        <ion-input type="text" name="password" [(ngModel)] = "usuarioModel.password"> </ion-input>
+      </ion-item>
+      <ion-item *ngIf="!textPasswordCurrent" style="color: antiquewhite;">
+        <ion-label position="floating">Current password </ion-label>
+        <ion-input type="password" name="password" [(ngModel)] = "usuarioModel.password"> </ion-input>
+      </ion-item>
+      <div *ngIf="!textPasswordCurrent" slot="end" >
+        <ion-button (click)="showCurrentPassword()" ><ion-icon name="eye-outline"></ion-icon></ion-button>
+      </div>
+      <div *ngIf="textPasswordCurrent" slot="end">
+        <ion-button (click)="showCurrentPassword()"><ion-icon name="eye-off-outline"></ion-icon></ion-button>
+      </div>
+  </ion-item>
+
+  <ion-item >
+    <ion-item *ngIf="textPasswordNew" style="color: antiquewhite;">
+      <ion-label position="floating">New password</ion-label>
+    <ion-input type="text" name="newPassword" [(ngModel)] = "newPassword"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!textPasswordNew" style="color: antiquewhite;">
+      <ion-label position="floating">New password</ion-label>
+    <ion-input type="password" name="newPassword" [(ngModel)] = "newPassword"></ion-input>
+    </ion-item>
+    <div *ngIf="!textPasswordNew" slot="end">
+      <ion-button (click)="showNewPassword()"><ion-icon name="eye-outline"></ion-icon></ion-button>
+    </div>
+    <div *ngIf="textPasswordNew" slot="end">
+      <ion-button (click)="showNewPassword()"><ion-icon name="eye-off-outline"></ion-icon></ion-button>
+    </div>
+</ion-item>
+
+
+  <ion-item style="color: antiquewhite;">
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type="text" name="nombre" value="{{usuarioModel.nombre}}" [(ngModel)] = "usuarioModel.nombre"></ion-input>
+  </ion-item>
+  <ion-item style="color: antiquewhite;">
+    <ion-label position="floating">Apellidos</ion-label>
+    <ion-input type="text" name="apellidos" value="{{usuarioModel.apellidos}}" [(ngModel)] = "usuarioModel.apellidos"></ion-input>
+  </ion-item>
+  <ion-item style="color: antiquewhite;">
+    <ion-label position="floating">Movil</ion-label>
+    <ion-input type="text" name="movil" value="{{usuarioModel.movil}}" [(ngModel)] = "usuarioModel.movil"></ion-input>
+  </ion-item> -->
+
+  <form [formGroup]="controlForm" *ngFor="let item of nombreControles; let i = index">
+    <ion-item style="color: antiquewhite;">
+      <ion-label position="floating">{{item}}</ion-label>
+      <ion-input *ngIf="i == 0 || i > 2" [formControlName]=item name="{{item}}" type="text" [(ngModel)] = "catchDataArray[i]"></ion-input>
+      <ion-input *ngIf="i == 1 || i == 2"  [formControlName]=item name="{{item}}" type="password" [(ngModel)] = "catchDataArray[i]"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="mensajeErrorActivo && !validateAllControlArrayEditPerfil[i+1]" style="color: antiquewhite;">
+      <ion-label class="errorValidation"
+      >{{errorAllControlArrayEditPerfil[i]
+      }}</ion-label> 
+    </ion-item>
+
+    </form>
+
+  <ion-button expand="block" (click)="validateAndEdit()">Guardar cambios</ion-button>
+</ion-content>

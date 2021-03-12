@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-item class="fuenteCabezera" style="text-align: center; font-size: 19px;">
+      <ion-avatar>
+        <img src="../../../../assets/icon/user-icon.png"  width="100" height="100" />
+      </ion-avatar>
+      <ion-label>{{usuarioModel.nombre}}</ion-label>
+    </ion-item>
+    <ion-buttons slot="end" (click) = "closeSession()">
+      <img src="../../../../assets/icon/closeSession.png"  width="40" height="40" />
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <hr color="#3B245E" size="3">
+  <ion-item routerLink="/edit-perfil" style="color: antiquewhite;">
+    <ion-avatar style="margin-right: 10px;">
+      <img src="../../../../assets/icon/editUser-icon.png" />
+    </ion-avatar>
+    <ion-label style="margin-left: 30px; font-size: 18px;">Editar perfil</ion-label>
+  </ion-item>
+  <hr color="#3B245E" size="3">
+
+  <ion-item [routerLink]="['/fav-venta-perfil/', usuarioModel.idUsuario, usuarioModel.nombre]" style="color: antiquewhite;">
+    <ion-avatar style="margin-right: 10px;">
+      <img src="../../../../assets/icon/favorito-icon.png" />
+    </ion-avatar>
+    <ion-label style="margin-left: 30px; font-size: 18px;">Post´s de vendedores</ion-label>
+  </ion-item>
+  <hr color="#3B245E" size="3">
+
+  <ion-item [routerLink]="['/fav-compra-perfil/', usuarioModel.idUsuario, usuarioModel.nombre]" style="color: antiquewhite;">
+    <ion-avatar style="margin-right: 10px;">
+      <img src="../../../../assets/icon/favorito-icon.png" />
+    </ion-avatar>
+    <ion-label style="margin-left: 30px; font-size: 18px;">Post´s de compradores</ion-label>
+  </ion-item>
+  <hr color="#3B245E" size="3">
+
+  <ion-item [routerLink]="['/my-post-venta/', usuarioModel.idUsuario, usuarioModel.nombre]" style="color: antiquewhite;">
+    <ion-avatar style="margin-right: 10px;">
+      <img src="../../../../assets/icon/posts.icon.png" />
+    </ion-avatar>
+    <ion-label style="margin-left: 30px; font-size: 18px;">My post`s de venta</ion-label>
+  </ion-item>
+  <hr color="#3B245E" size="3">
+
+  <ion-item [routerLink]="['/my-post-compra/', usuarioModel.idUsuario, usuarioModel.nombre]" style="color: antiquewhite;">
+    <ion-avatar style="margin-right: 10px;">
+      <img src="../../../../assets/icon/posts.icon.png" />
+    </ion-avatar>
+    <ion-label style="margin-left: 30px; font-size: 18px;">My post`s de compra</ion-label>
+  </ion-item>
+  <hr color="#3B245E" size="3">
+
+</ion-content>

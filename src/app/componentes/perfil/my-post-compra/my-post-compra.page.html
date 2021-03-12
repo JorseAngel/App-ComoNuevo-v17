@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-item class="fuenteCabezera" style="text-align: center;">
+      <ion-avatar>
+        <img src="../../../../assets/icon/posts.icon.png"  width="100" height="100" />
+      </ion-avatar>
+      <ion-label>{{nombreUser}}</ion-label>
+    </ion-item>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-item class="fuenteCabezera">
+      <ion-title slot="start"><span style="color: #f9af12">MIS</span> POST`S DE COMPRA </ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item-sliding *ngFor="let item of posts">
+
+      <ion-item>
+
+        <ion-thumbnail style="width: 70px; height: 70px; border-radius: 100px;" slot="start" class="ion-margin-start">
+          <img style="border-radius: 10px;" src="../../../../assets/img/logo.jpeg"/>
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="color: antiquewhite; font-weight: bold; font-size: 18px;">{{item.titulo.toUpperCase().substr(0,28)}}</h2>
+          <p style=" color: #ffdb8f; font-size: 18px;">
+            <!-- {{item.descripcion.substr(0,11)}} ...  -->
+            <span style=" color: #9e9d73; font-size: 13px;">(Desliza para mas info)</span>
+          </p>
+        </ion-label>
+        <div>
+        <ion-label class="precioDoradoRound">
+          <h2 style="color: black; font-weight: bold;">{{item.precio}} €</h2>
+        </ion-label>
+      </div>
+
+      </ion-item>
+
+      <ion-item-options side="start">
+        <ion-item-option color="danger" (click)="deleteMyPost(item.id)">
+          <img src="../../../../assets/icon/deletePost.png" alt="Delete post">
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end" [routerLink]="['/detail-compra/', item.id]">
+        <ion-item-option color="primary">
+          <ion-icon slot="icon-only" name="information-circle"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="border: 4px solid; border-color: #3B245E;">
+    <ion-card-header>
+      <div class="imgUser" *ngIf="postVentaModel.imagen != 'data:,'; else diferente">
+        <img style="max-width:300px;max-height: 300px ;width:auto;height:auto;" src={{postVentaModel.imagen}}/>
+      </div>
+      
+      <ng-template #diferente>
+        <div class="imgUser">
+          <img src="../../../../assets/img/logo-nombre.jpeg" style="resize: none; width: 300px; height: 300px;"/>
+        </div>
+      </ng-template>
+      <ion-card-title style="text-align: center; color: #f9af12; font-weight: bolder; font-size: 30px; text-transform: uppercase;">
+        {{postVentaModel.titulo}}
+      </ion-card-title>
+      <hr color="#3B245E" size="3">
+      <ion-card-subtitle style="text-align: center; color: #f9af12; font-weight: bolder; font-size: 20px;">
+        {{postVentaModel.precio}} €
+      </ion-card-subtitle>
+      <hr color="#3B245E" size="3">
+    </ion-card-header>
+  
+    <ion-card-content style="text-align: center; color: #ffdb8f; font-weight: bolder; font-size: 18px;">
+      {{postVentaModel.descripcion}}
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

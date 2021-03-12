@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar class="fuenteCabezera">
+    <ion-buttons slot="end" routerLink="/mi-perfil">
+        <img src="../../../../assets/icon/user-icon.png"  width="40" height="40" />
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" (click)="resetFavs()">
+        RESET FAV`s
+    </ion-buttons> -->
+    <ion-title slot="start">VENDEDORES</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar style="border-bottom: 2px ridge; border-top: 2px ridge; border-color: #3B245E;">
+        <ion-tab-button style="color: #f9af12">
+          <ion-icon name="exit-outline"></ion-icon>
+          <ion-label>Post´s de venta</ion-label>
+        </ion-tab-button>
+        <ion-tab-button routerLink="/feed-compra" style="color: antiquewhite;">
+          <ion-icon name="enter-outline"></ion-icon>
+          <ion-label>Post´s de compra</ion-label>
+          </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item-sliding *ngFor="let item of posts">
+
+      <ion-item>
+
+        <ion-thumbnail style="width: 70px; height: 70px; border-radius: 100px;" slot="start" *ngIf="item.imagen != 'data:,'"  class="ion-margin-start">
+          <img style="border-radius: 10px;" src={{item.imagen}}/>
+        </ion-thumbnail>
+        <ion-thumbnail style="width: 70px; height: 70px; border-radius: 100px;" slot="start" *ngIf="item.imagen == 'data:,'" class="ion-margin-start">
+          <img style="border-radius: 10px;" src="../../../../assets/img/logo.jpeg"/>
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="color: antiquewhite; font-weight: bold; font-size: 18px;">{{item.titulo.toUpperCase().substr(0,28)}}</h2>
+          <p style=" color: #ffdb8f; font-size: 18px;">
+            <!-- {{item.descripcion.substr(0,11)}} ...  -->
+            <span style=" color: #9e9d73; font-size: 13px;">(Desliza para mas info)</span>
+          </p>
+        </ion-label>
+        <div>
+        <!-- <ion-label style="text-align: center; background-color: blue; margin-right: 30px; border-radius: 700px;  padding: 15px;"> -->
+        <ion-label class="precioDoradoRound">
+          <h2 style="color: black; font-weight: bold;">{{item.precio}} € </h2>
+        </ion-label>
+      </div>
+
+      </ion-item>
+
+      <ion-item-options side="start">
+        <ion-item-option color="success" (click)="addFav(item.id)">
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="openPostDetail(item.id)">
+          <ion-icon slot="icon-only" name="information-circle"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" o el style>
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <ion-fab-button routerLink="/add-venta" color="primary">
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button routerLink="/add-compra" color="primary">
+        <ion-icon name="enter-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+
+  </ion-fab>
+</ion-content>
